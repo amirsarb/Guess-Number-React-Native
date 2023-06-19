@@ -6,13 +6,20 @@ import GameScreen from "./screens/GameScreen";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
+
+  const newGameHandler = () => {
+    //  console.log("running");
+    setUserNumber("");
+    // content = <StartScreen handleStartGame={handleStartGame} />;
+  };
   const handleStartGame = (selectedNumber) => {
     setUserNumber(selectedNumber);
   };
   let content = <StartScreen handleStartGame={handleStartGame} />;
-
   if (userNumber) {
-    content = <GameScreen userNumber={userNumber} />;
+    content = (
+      <GameScreen userNumber={userNumber} newGameHandler={newGameHandler} />
+    );
   }
 
   return (
